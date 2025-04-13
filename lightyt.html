@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>軽量動画ビューア</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; background: #f5f5f5; }
+    input, button { padding: 10px; font-size: 16px; margin: 10px; width: 80%; }
+    iframe { margin-top: 20px; width: 90%; height: 300px; border: none; }
+  </style>
+</head>
+<body>
+  <h1>軽量YouTubeビューア</h1>
+  <input type="text" id="videoUrl" placeholder="YouTubeのURLを貼ってね">
+  <button onclick="loadVideo()">再生</button>
+  <div id="videoContainer"></div>
+
+  <script>
+    function loadVideo() {
+      const url = document.getElementById("videoUrl").value;
+      const videoId = url.split("v=")[1]?.split("&")[0];
+      if (videoId) {
+        document.getElementById("videoContainer").innerHTML =
+          `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?rel=0&controls=1" allowfullscreen></iframe>`;
+      } else {
+        alert("正しいURLを入れてね！");
+      }
+    }
+  </script>
+</body>
+</html>
